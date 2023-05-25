@@ -32,7 +32,7 @@ const routes: Routes = [
     path: '',
     component: NavGuestComponent,
     children: [
-      { path: 'dashboard', component: ListadoGamesComponent },
+      { path: '', component: ListadoGamesComponent },
       { path: 'registro', component: RegistroComponent },
       { path: 'login', component: LoginComponent },
       {

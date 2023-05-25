@@ -3,3 +3,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   } */
+
+  .card-container {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-container:hover {
+    transform: scale(1.1);
+}

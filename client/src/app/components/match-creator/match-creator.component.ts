@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { GlobalsService } from 'src/app/services/globals/globals.service';
 import { MatchesService } from 'src/app/services/matches/matches.service';
 
+import { ToastrService } from 'ngx-toastr';
+import { ClipboardService } from 'ngx-clipboard';
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-match-creator',
   templateUrl: './match-creator.component.html',
@@ -21,7 +25,9 @@ export class MatchCreatorComponent {
   constructor(
     private router: Router,
     private matchesService: MatchesService,
-    private globalsService: GlobalsService
+    private globalsService: GlobalsService,
+    private toastrService: ToastrService,
+  private clipboardService: ClipboardService
   ) {}
 
   public createMatch() {
@@ -31,9 +37,16 @@ export class MatchCreatorComponent {
       .createMatch(this.selectedGame, user.username, this.state ?? {})
       .subscribe({
         next: (match) => {
-          alert(
-            `Se creo el juego con exito.\nEl codigo del juego es ${match._id}`
-          );
+          
+          this.clipboardService.copyFromContent(match._id !);
+          Swal.fire({
+            icon: 'success',
+            title: `Se creó el juego con éxito.\nEl código del juego es`,
+            //timer: 2000,
+            html: `<input type="text" value="${match._id}" id="gameCodeInput" style="border: 1px solid black;" >`,
+            footer:'El codigo se a copiado en el portapapeles',
+            showConfirmButton: true,
+          });
 
           this.router
             .navigateByUrl('/profesor')

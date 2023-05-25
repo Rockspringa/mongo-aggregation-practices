@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AutenticationService } from '../../autentication.service';
 import { User } from '../../user/user.interface';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,13 @@ export class LoginComponent {
 
         const message = `Bienvenido, ${this.user.name} (${this.user.username})`;
 
-        alert(message);
+        //alert(message);
+        Swal.fire({
+          icon: 'success',
+          title: message,
+          timer: 2000,
+          showConfirmButton: false,
+        });
         this.user.password = '';
         localStorage.setItem('actualUser', JSON.stringify(this.user));
 
@@ -44,7 +51,13 @@ export class LoginComponent {
       },
       error: (error) => {
         console.error('Error al iniciar sesión', error);
-        alert(error.error);
+        //alert(error.error);
+        Swal.fire({
+          icon: 'error',
+          title: 'error.error',
+          timer: 2000,
+          showConfirmButton: false,
+        });
         // Maneja el error de inicio de sesión, muestra un mensaje de error, etc.
       },
     });
