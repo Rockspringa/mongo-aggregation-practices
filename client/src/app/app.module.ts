@@ -44,7 +44,6 @@ import { ListadoPreguntasComponent } from './components/listado-preguntas/listad
 import { CrearPreguntasComponent } from './components/crear-preguntas/crear-preguntas.component';
 import { InicioPreguntasComponent } from './components/inicio-preguntas/inicio-preguntas.component';
 
-import { ToastrModule } from 'ngx-toastr';
 import { ClipboardModule } from 'ngx-clipboard';
 
 @NgModule({
@@ -104,7 +103,6 @@ import { ClipboardModule } from 'ngx-clipboard';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
     ClipboardModule
   ],
   providers: [GameDataService],
