@@ -1,0 +1,25 @@
+<div class="container mx-auto my-4">
+  <div class="flex flex-col items-stretch justify-between m-auto w-fit">
+    <div class="container">
+      <h1>
+        Ya casi puedes empezar a jugar, solo debes de proporcionar el cofigo del
+        juego
+      </h1>
+      <input
+        placeholder="Codigo del juego"
+        class="input input-bordered"
+        required
+        [(ngModel)]="matchId"
+      />
+      <input
+        *ngIf="!username"
+        placeholder="Nombre de usuario"
+        class="input input-bordered"
+        [(ngModel)]="guestUsername"
+      />
+      <button (click)="(addPlayerToMatch())" class="btn btn-primary">
+        Comenzar
+      </button>
+    </div>
+  </div>
+</div>

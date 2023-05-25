@@ -1,0 +1,38 @@
+nav {
+    background-color: #8a2be2; /* Color de fondo púrpura */
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  li {
+    margin-right: 20px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #fff; /* Color del texto blanco */
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #eaeaea; /* Color del texto gris claro al pasar el cursor */
+  }
+  
+  .active {
+    color: #ffd700; /* Color del texto dorado para la página activa */
+  }

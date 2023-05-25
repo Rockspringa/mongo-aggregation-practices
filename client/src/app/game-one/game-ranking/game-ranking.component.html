@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<br>
+<br>
+<br>
+<h1>Tabla de puntuaciones</h1>
+<br>
+<div class="game-ranking-container">
+    <table class="game-ranking-table">
+      <thead>
+        <tr>
+          <th>Jugador</th>
+          <th>Puntuación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of players; let i = index" [ngClass]="{ 'winner': i === getWinnerIndex() }">
+          <td>{{ player }}</td>
+          <td>{{ playerScores[i] }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p>Tiempo total: {{ getElapsedTime() }} segundos</p>
+  </div>
+  

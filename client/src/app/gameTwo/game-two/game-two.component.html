@@ -1,0 +1,15 @@
+<app-nav-juegos></app-nav-juegos>
+<div class="jumbotron jumbotron-fluid bg-purple text-white">
+  <div class="container">
+    <h1 class="display-4">Bienvenido a Sopa de Letras</h1>
+    <p class="lead">¡Un juego para encontrar palabras correctas en una sopa de letras!</p>
+    <form [formGroup]="matchForm" (ngSubmit)="comenzarJuego()">
+      <div class="form-group">
+        <label for="codigo">Ingresa el código:</label>
+        <input type="text" class="form-control" id="codigo" formControlName="codigo" required>
+        <div *ngIf="codigoIncorrecto" class="text-danger">Código incorrecto</div>
+      </div>
+      <button type="submit" class="btn btn-primary">Comenzar</button>
+    </form>
+  </div>
+</div>

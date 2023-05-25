@@ -1,0 +1,58 @@
+<mat-sidenav-container fullscreen>
+    <!-- <app-barra></app-barra> -->
+    <app-nav-juegos></app-nav-juegos>
+    <hr>
+    <br>
+    <div class="container">
+      
+        <div class="left-column">
+          <div class="code-input">
+            <!-- Contenido del código de acceso -->
+            <h2>Ingresar a una Trivia</h2>
+            <mat-form-field>
+              <input matInput placeholder="Código de acceso" [(ngModel)]="codigoAcceso">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="ingresarTrivia()">Ingresar</button>
+          </div>
+          <div class="trivia-list">
+            <!-- Lista de trivias -->
+            <h2>Trivias Públicas</h2>
+            <mat-list>
+              <mat-list-item *ngFor="let trivia of triviasPublicas">
+                <!-- <h3 mat-line>{{ trivia.titulo }}</h3>
+                <p mat-line>{{ trivia.descripcion }}</p>
+                <button mat-raised-button color="primary" >Ingresar</button> -->
+                <ul>
+                    <li>
+                        <a class="list-group-item list-group-item-action" [routerLink]="['/pregunta']">{{ trivia.titulo }}</a>
+                    </li>
+                </ul>
+              </mat-list-item>
+            </mat-list>
+          </div>
+          <div class="trivia-list">
+            <!-- Lista de trivias -->
+            <h2>Crear trivia </h2>
+            <mat-list>
+                <button mat-raised-button color="primary" [routerLink]="['/crear-preguntas']" >Crear trivia</button>
+            </mat-list>
+          </div>
+        </div>
+        <div class="right-column">
+          <div class="ranking">
+            <!-- Ranking de puntajes altos -->
+            <h2>Ranking de Puntajes Altos</h2>
+            <mat-list>
+              <mat-list-item *ngFor="let puntaje of puntajesAltos">
+                <div class="ranking-item">
+                    <h3 mat-line>{{ puntaje.nombre }}</h3>
+                    <p mat-line>Puntaje: {{ puntaje.puntaje }}</p>
+                  </div>
+              </mat-list-item>
+            </mat-list>
+          </div>
+        </div>
+      </div>
+      
+  </mat-sidenav-container>
+  

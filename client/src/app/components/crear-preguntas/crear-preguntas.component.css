@@ -1,0 +1,16 @@
+/* .bg-dark {
+    --tw-bg-opacity: 1;
+    background-color: rgb(9 9 9 / var(--tw-bg-opacity));
+}
+.text-light {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity));
+} */
+.container {
+  background-color: black;
+}
+
+.form-control {
+    background-color: #333333; /* Cambia el color gris según tus preferencias */
+    color: white; /* Cambia el color del texto según tus preferencias */
+  }

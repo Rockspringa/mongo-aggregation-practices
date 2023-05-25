@@ -1,0 +1,22 @@
+<ng-container [ngSwitch]="match?.game">
+  <app-board
+    *ngSwitchCase="'crucigrama'"
+    [id]="id"
+    [letters]="match?.state?.letters"
+    [hints]="match?.state?.hints"
+    (winned)="updatePoints($event)"
+  ></app-board>
+
+  <app-game-sopa
+    *ngSwitchCase="'sopa de letras'"
+    (winned)="updatePoints($event)"
+  ></app-game-sopa>
+
+  <app-game-inicio
+    *ngSwitchCase="'palabras mezcladas'"
+    (winned)="updatePoints($event)"
+  ></app-game-inicio>
+
+  <app-pregunta [trivia]="match?.state" (winned)="updatePoints($event)">
+  </app-pregunta>
+</ng-container>

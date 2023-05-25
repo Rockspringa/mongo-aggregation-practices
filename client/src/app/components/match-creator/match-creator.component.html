@@ -1,0 +1,55 @@
+<div class="container mx-auto my-4">
+  <div class="flex flex-col items-stretch m-auto w-fit">
+    <div class="flex items-center justify-center">
+      <div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Juego a crear:</span>
+          </label>
+          <select [(ngModel)]="selectedGame" class="select select-bordered">
+            <option [ngValue]="''" disabled selected>
+              Seleccione el juego
+            </option>
+            <option *ngFor="let game of games" [ngValue]="game">
+              {{ game | titlecase }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="selectedGame !== ''">
+      <div class="divider"></div>
+      <ng-container [ngSwitch]="selectedGame">
+        <app-crosswords-creator
+          *ngSwitchCase="'crucigrama'"
+          (changeState)="state = $event"
+        ></app-crosswords-creator>
+
+        <app-palabras
+          *ngSwitchCase="'sopa de letras'"
+          (changeState)="state = $event"
+        ></app-palabras>
+
+        <app-palabras
+          *ngSwitchCase="'palabras mezcladas'"
+          (changeState)="state = $event"
+        ></app-palabras>
+
+        <app-crear-preguntas
+          *ngSwitchCase="'intriga mental'"
+          [mostrar]="true"
+          (changeState)="state = $event"
+        >
+        </app-crear-preguntas>
+      </ng-container>
+      <div class="divider"></div>
+
+      <div class="alert shadow-lg m-2">
+        <button class="btn btn-info ml-auto" (click)="createMatch()">
+          CREAR JUEGO
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</div>

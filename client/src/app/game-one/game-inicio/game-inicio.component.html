@@ -1,0 +1,49 @@
+<br>
+<br>
+
+<div class="container">
+  <div class="timer">Tiempo transcurrido: {{ getElapsedTime() }} segundos</div>
+  
+  <div class="game-board">
+    <div class="word-panel">
+      <div class="word-board">
+        <div *ngFor="let word of words; let wordIndex = index" class="word">
+          <div *ngFor="let letter of word.split(''); let letterIndex = index" class="letter">
+            <span [ngClass]="{ 'visible': isLetterRevealed(wordIndex, letterIndex), 'hidden': !isLetterRevealed(wordIndex, letterIndex), 'completed': isWordCompleted(wordIndex) }">
+              {{ getLetterDisplay(wordIndex, letterIndex) }}
+            </span>
+          </div>
+          <div class="word-space"></div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <h2>Lista de Letras</h2>
+    <div class="selected-letters">
+      <div class="selected-words">
+        <div class="words-container">
+          <span *ngFor="let letter of selectedLetters; let i = index" class="selected-letter">
+            {{ letter }}
+            <button class="remove-btn" (click)="removeSelectedLetter(i)">&times;</button>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-panel">
+      <div *ngFor="let letter of letters" class="letter" (click)="selectLetter(letter)">{{ letter }}</div>
+    </div>
+  </div>
+
+  <div class="word-form">
+    <input type="text" [value]="selectedLetters.join('')" readonly>
+    <button class="submit-btn" (click)="formWord()">Validar</button>
+  </div>
+
+  <div *ngIf="showAlert" class="alert" [ngClass]="{ 'success': isWordValid, 'failure': !isWordValid }">
+    {{ alertMessage }}
+  </div>
+</div>
+<ng-container *ngIf="gameFinished">
+  <a routerLink="/ranking">Ir a Ranking</a>
+</ng-container>

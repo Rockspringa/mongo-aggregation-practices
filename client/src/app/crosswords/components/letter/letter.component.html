@@ -1,0 +1,19 @@
+<label class="indicator" [class.bg-base-content]="disabled">
+  <span
+    *ngIf="wordIndexes && wordIndexes.length"
+    class="indicator-item badge badge-xs badge-outline"
+    >{{ wordIndexes[0] + 1 }}</span
+  >
+  <span
+    *ngIf="wordIndexes && wordIndexes.length > 1"
+    class="indicator-item indicator-middle badge badge-xs badge-outline"
+    >{{ wordIndexes[1] + 1 }}</span
+  >
+  <input
+    [disabled]="disabled"
+    [ngClass]="classes"
+    [ngModel]="letter"
+    (ngModelChange)="gotChange($event)"
+    (focus)="gotFocused()"
+  />
+</label>

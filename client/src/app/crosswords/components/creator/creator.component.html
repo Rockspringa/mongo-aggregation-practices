@@ -1,0 +1,39 @@
+<div class="flex flex-col items-stretch m-auto w-fit">
+  <div [ngClass]="classes">
+    <app-letter
+      *ngFor="let letter of letters; let i = index"
+      [state]="state"
+      [letter]="getLetter(letter)"
+      [wordIndexes]="letter?.wordIndexes"
+      (changed)="changeLetter(i, $event)"
+    ></app-letter>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="flex flex-col-reverse">
+    <ng-container *ngFor="let hint of hints; let i = index">
+      <label
+        class="alert shadow-lg m-2 cursor-pointer flex align-center w-full"
+        (click)="actualWord = i"
+        [class.alert-info]="i === actualWord"
+      >
+        <span class="flex-none"> {{ "Descripcion " + (i + 1) }}:</span>
+        <input
+          (focus)="actualWord = i"
+          [(ngModel)]="hint.description"
+          class="input w-full flex-auto"
+        />
+      </label>
+    </ng-container>
+
+    <div class="alert shadow-lg m-2">
+      <button
+        class="btn btn-info ml-auto"
+        (click)="hints.push({ description: '', answered: false })"
+      >
+        AÑADIR
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="flex flex-col items-stretch m-auto w-fit">
+  <div [ngClass]="classes">
+    <app-letter
+      *ngFor="let letter of letters"
+      [disabled]="!letter?.char"
+      [state]="letter?.state"
+      [letter]="letter?.actualChar ?? ''"
+      [wordIndexes]="letter?.wordIndexes"
+      (changed)="checkWords(letter!, $event)"
+      (focus)="focusWord(letter!)"
+    ></app-letter>
+  </div>
+
+  <div class="divider"></div>
+
+  <div>
+    <div class="overflow-x-auto overflow-Y-auto m-2 flex justify-center">
+      <ul class="steps">
+        <li
+          *ngFor="let hint of hints; let i = index"
+          class="step"
+          [class.step-info]="actualLetter?.wordIndexes?.includes(i)"
+          [class.step-accent]="hint.answered"
+        ></li>
+      </ul>
+    </div>
+
+    <ng-container *ngFor="let hint of hints; let i = index">
+      <div
+        *ngIf="!hint.answered"
+        class="alert shadow-lg m-2"
+        [class.order-1]="actualLetter?.wordIndexes?.includes(i)"
+      >
+        <span [class.text-info]="actualLetter?.wordIndexes?.includes(i)">
+          Descripcion {{ i + 1 }}:
+        </span>
+        <span>{{ hint.description }}</span>
+      </div>
+    </ng-container>
+  </div>
+</div>

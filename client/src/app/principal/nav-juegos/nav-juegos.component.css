@@ -1,0 +1,58 @@
+/* Estilos generales para la barra de navegación */
+nav {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  
+  a:hover {
+    color: #ff9900;
+  }
+  
+  /* Estilos específicos para los enlaces */
+  .nav-link {
+    padding: 8px 12px;
+    border-radius: 4px;
+  }
+  
+  .nav-link:hover {
+    background-color: #ff9900;
+  }
+  
+  /* Estilos específicos para el botón de cerrar sesión */
+  .logout-button {
+    padding: 8px 20px;
+    background-color: #ff9900;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #ff6600;
+  }
+  

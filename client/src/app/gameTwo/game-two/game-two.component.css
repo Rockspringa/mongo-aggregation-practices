@@ -1,0 +1,51 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: purple;
+  padding: 20px;
+}
+
+.container {
+    background-color: purple;
+    color: white;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  h1 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+    margin-top: -10%;
+  }
+  
+  form {
+    width: 50%;
+    max-width: 500px;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+
+  }
+  .form-control {
+    color: black;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .btn-primary {
+    background-color: #6f42c1;
+    border-color: #6f42c1;
+  }
+  
+  .btn-primary:hover {
+    background-color: #5e35b1;
+    border-color: #5e35b1;
+  }

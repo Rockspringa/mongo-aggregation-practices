@@ -1,0 +1,148 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #FFD700, #ffa200); /* Degradado lineal de dos colores */
+  padding: 20px;
+}
+
+.game-container {
+  text-align: center;
+  margin-top: -80px; 
+  display: flex; /* Alinea los elementos en línea */
+  justify-content: space-between;
+  padding: 100px;
+  
+}
+
+.header {
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: bold;
+  color: rgb(246, 241, 241);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  
+}
+
+.timer {
+  font-weight: bold;
+  color: black;
+}
+
+.word-list {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: block;
+}
+
+li {
+  display: block;
+  padding: 5px;
+  margin: 5px;
+  font-weight: bold;
+  color: black;
+}
+
+li.found {
+  color: green;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 20px auto;
+  background-color: #FFFFFF; /* Tablero blanco */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra para un aspecto moderno */
+  border: none; /* Elimina el borde por defecto de la tabla */
+  border-radius: 40px; /* Bordes redondos para el tablero */
+  overflow: hidden; /* Evita que el contenido sobresalga del borde redondeado */
+}
+
+td {
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  border-color: #f4e132;
+}
+
+td.selected {
+  background-color: yellow;
+}
+
+td:hover,
+td.selected {
+  transform: scale(1.1);
+  background-color: yellow;
+}
+
+h3:only-child {
+  margin-bottom: 20px;
+}
+
+.game-container > h2:first-child {
+  margin-top: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+}
+
+.found-words {
+  color: #ffffff;
+
+}
+.game-container > h3 {
+  margin-top: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+}
+
+.orden {
+ font-size: 28px;
+ font-weight: bold;
+ color: black;
+}
+
+.words-container {
+  background-color: #FFFFFF;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.words-container h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: black;
+}
+
+.words-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.words-container li {
+  display: inline;
+  padding: 5px;
+  margin: 2px;
+  font-weight: bold;
+}
+

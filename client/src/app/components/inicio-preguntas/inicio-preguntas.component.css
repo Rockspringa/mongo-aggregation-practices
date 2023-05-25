@@ -1,0 +1,36 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    /* background-color: #000; */
+    /* color: #fff; */
+  }
+  
+  .left-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .right-column {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .code-input,
+  .trivia-list,
+  .ranking {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #222;
+    margin-bottom: 20px;
+  }
+  .ranking-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .list-group-item:hover {
+    background-color: rgba(211, 211, 211, 0.732);
+}
+  

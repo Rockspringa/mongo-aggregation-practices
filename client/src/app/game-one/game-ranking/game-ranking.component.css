@@ -1,0 +1,56 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  background-color: purple;
+  color: rgb(4, 2, 2);
+  padding: 20px;
+}
+
+.game-ranking-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.game-ranking-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid rgb(9, 6, 6);
+}
+
+th {
+  background-color: #4e4e4e;
+  color: rgb(242, 232, 232);
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+h1{
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+
+}

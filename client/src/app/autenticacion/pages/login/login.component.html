@@ -1,0 +1,29 @@
+<mat-sidenav-container fullscreen>
+    <app-barra></app-barra>
+    <br>
+    <div class="container">
+      <h1>Iniciar Sesión</h1>
+      <div fxLayout="row" fxLayoutGap="40px " fxLayout.xs="column">
+        <div fxFlex="50" fxLayout="column">
+          <div fxLayout="row" fxLayoutGap="40px ">
+            <mat-form-field>
+              <mat-label>Nombre de usuario</mat-label>
+              <input matInput type="text" [(ngModel)]="username" name="username" required>
+            </mat-form-field>
+          </div>
+          <br>
+          <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" [(ngModel)]="password" name="password" required>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button color="primary" (click)="login()">Iniciar Sesión</button>
+        </div>
+        <div fxFlex="50">
+          <img alt="">
+        </div>
+      </div>
+    </div>
+    
+  </mat-sidenav-container>
+  

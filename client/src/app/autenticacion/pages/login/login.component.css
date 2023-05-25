@@ -1,0 +1,31 @@
+.form-container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+
+  /* Estilos para el contenedor del mensaje de bienvenida */
+.welcome-message {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+/* Estilos para el texto del mensaje de bienvenida */
+.welcome-message p {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.welcome-message p:first-child {
+  font-weight: bold;
+}
+
+.welcome-message p.student {
+  color: green;
+}
+
+.welcome-message p.non-student {
+  color: red;
+}
