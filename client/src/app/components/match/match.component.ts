@@ -45,7 +45,7 @@ export class MatchComponent implements OnInit {
         console.error(err);
 
         alert('El codigo no es valido');
-        this.router.navigate(['../'], { relativeTo: this.route });
+        this.router.navigate(['../', '../'], { relativeTo: this.route });
       },
     });
   }
@@ -55,6 +55,10 @@ export class MatchComponent implements OnInit {
 
     this.matchesService
       .updatePlayerPoints(this.id, user.username, points)
-      .subscribe({ next: () => console.log('Se guardaron sus resultados') });
+      .subscribe(() => console.log('Se guardaron sus resultados'));
+
+    const url = this.router.url.replace('jugar', 'ranking');
+
+    this.router.navigateByUrl(url);
   }
 }

@@ -200,7 +200,7 @@ async function changePlayerPoints(req, res) {
 
   await updatePlayerPoints(id, username, +points);
 
-  res.status(200);
+  res.status(200).send("Se actualizaron los puntos del jugador");
 }
 
 /**

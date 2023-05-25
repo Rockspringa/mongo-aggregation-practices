@@ -1,41 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { GameDataService } from '../game-data.service';
+import { Player } from 'src/model/interfaces/player.interface';
+import { MatchesService } from 'src/app/services/matches/matches.service';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-ranking',
   templateUrl: './game-ranking.component.html',
-  styleUrls: ['./game-ranking.component.css']
+  styleUrls: ['./game-ranking.component.css'],
 })
 export class GameRankingComponent implements OnInit {
-  players: string[] = [];
-  playerScores: number[] = [];
+  players: Player[] = [];
 
-  constructor(private gameDataService: GameDataService) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private matchesService: MatchesService
+  ) {}
 
   ngOnInit() {
-    this.players = this.gameDataService.getPlayers();
-    this.playerScores = this.gameDataService.getPlayerScores();
-  }
+    this.route.paramMap.subscribe((param: ParamMap) => {
+      const id = param.get('id') ?? '';
 
-  getWinnerIndex(): number {
-    let maxScore = -Infinity;
-    let winnerIndex = 0;
-
-    for (let i = 0; i < this.playerScores.length; i++) {
-      if (this.playerScores[i] > maxScore) {
-        maxScore = this.playerScores[i];
-        winnerIndex = i;
+      if (!id) {
+        this.router.navigate(['../', '../'], { relativeTo: this.route });
       }
-    }
 
-    return winnerIndex;
-  }
-
-  getElapsedTime(): number {
-    const currentTime = new Date();
-    const elapsedMilliseconds =
-      currentTime.getTime() - this.gameDataService.getStartTime().getTime();
-    const elapsedSeconds = Math.floor(elapsedMilliseconds / 1000);
-    return elapsedSeconds;
+      this.matchesService.getMatch(id).subscribe((match) => {
+        this.players = match.players.sort(
+          (firstPlayer, secondPlayer) =>
+            secondPlayer.points - firstPlayer.points
+        );
+      });
+    });
   }
 }

@@ -12,7 +12,7 @@
         [(ngModel)]="matchId"
       />
       <input
-        *ngIf="!username"
+        *ngIf="guest"
         placeholder="Nombre de usuario"
         class="input input-bordered"
         [(ngModel)]="guestUsername"
