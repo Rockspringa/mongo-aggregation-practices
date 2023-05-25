@@ -1,12 +1,12 @@
 <label class="indicator" [class.bg-base-content]="disabled">
   <span
     *ngIf="wordIndexes && wordIndexes.length"
-    class="indicator-item badge badge-xs badge-outline"
+    class="indicator-item badge badge-xs badge-outline text-info"
     >{{ wordIndexes[0] + 1 }}</span
   >
   <span
     *ngIf="wordIndexes && wordIndexes.length > 1"
-    class="indicator-item indicator-middle badge badge-xs badge-outline"
+    class="indicator-item indicator-middle badge badge-xs badge-outline text-info"
     >{{ wordIndexes[1] + 1 }}</span
   >
   <input

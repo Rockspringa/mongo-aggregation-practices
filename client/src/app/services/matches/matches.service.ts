@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { GlobalsService } from '../globals/globals.service';
 import { HttpClient } from '@angular/common/http';
 import { Match } from 'src/model/interfaces/match.interface';
+import { Player } from 'src/model/interfaces/player.interface';
 
 @Injectable({
   providedIn: 'root',

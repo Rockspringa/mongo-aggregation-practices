@@ -1,25 +1,20 @@
-<app-nav-stud></app-nav-stud>
-<br>
-<br>
-<br>
-<h1>Tabla de puntuaciones</h1>
-<br>
-<div class="game-ranking-container">
-    <table class="game-ranking-table">
-      <thead>
-        <tr>
-          <th>Jugador</th>
-          <th>Puntuación</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let player of players; let i = index" [ngClass]="{ 'winner': i === getWinnerIndex() }">
-          <td>{{ player }}</td>
-          <td>{{ playerScores[i] }}</td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <p>Tiempo total: {{ getElapsedTime() }} segundos</p>
-  </div>
-  
+<div class="mx-auto my-4">
+  <table class="table table-compact w-fit p-4 bg-base-200">
+    <thead class="bg-base-300">
+      <tr>
+        <th class="m-2">#</th>
+        <th class="m-2">Nombre de usuario</th>
+        <th class="m-2">Rol</th>
+        <th class="m-2">Punteo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let player of players; let i = index" class="hover">
+        <th class="m-2">{{ i + 1 }}</th>
+        <td class="m-2">{{ player.username }}</td>
+        <td class="m-2">{{ player.guest ? "Invitado" : "Estudiante" }}</td>
+        <td class="m-2">{{ player.points }} Puntos</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

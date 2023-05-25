@@ -12,6 +12,7 @@ export class GetInMatchComponent implements OnInit {
   matchId: string = '';
   username: string = '';
   guestUsername: string = '';
+  guest: boolean = false;
 
   constructor(
     private router: Router,
@@ -21,12 +22,12 @@ export class GetInMatchComponent implements OnInit {
 
   ngOnInit(): void {
     this.username = this.globalsService.getUser().username || '';
+
+    this.guest = !this.router.url.includes('estudiante');
   }
 
   public addPlayerToMatch() {
-    const guest = !this.router.url.includes('estudiante');
-
-    if (guest) {
+    if (this.guest) {
       if (!this.guestUsername) {
         alert('Tiene que agregar un nombre de usuario provisional');
       } else {
@@ -36,7 +37,7 @@ export class GetInMatchComponent implements OnInit {
     }
 
     this.matchesService
-      .addPlayer(this.matchId, this.username, guest)
+      .addPlayer(this.matchId, this.username, this.guest)
       .subscribe({
         next: () =>
           this.router.navigateByUrl(`${this.router.url}/${this.matchId}`),

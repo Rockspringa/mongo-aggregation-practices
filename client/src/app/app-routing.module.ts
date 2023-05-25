@@ -35,6 +35,7 @@ const routes: Routes = [
       { path: '', component: ListadoGamesComponent },
       { path: 'registro', component: RegistroComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'ranking/:id', component: GameRankingComponent },
       {
         path: 'jugar',
         children: [

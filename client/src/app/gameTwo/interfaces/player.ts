@@ -1,5 +1,5 @@
 export interface Player {
-        username: String;
-        guest: Boolean;
-        points: Number;      
+  username: string;
+  guest: boolean;
+  points: number;
 }
