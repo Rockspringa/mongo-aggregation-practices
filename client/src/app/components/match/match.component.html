@@ -17,6 +17,10 @@
     (winned)="updatePoints($event)"
   ></app-game-inicio>
 
-  <app-pregunta [trivia]="match?.state" (winned)="updatePoints($event)">
+  <app-pregunta
+    *ngSwitchCase="'intriga mental'"
+    [trivia]="match?.state"
+    (winned)="updatePoints($event)"
+  >
   </app-pregunta>
 </ng-container>

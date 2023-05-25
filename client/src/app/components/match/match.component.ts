@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { GlobalsService } from 'src/app/services/globals/globals.service';
 import { MatchesService } from 'src/app/services/matches/matches.service';
 import { Match } from 'src/model/interfaces/match.interface';
 
@@ -22,7 +23,8 @@ export class MatchComponent implements OnInit {
     private router: Router,
     private ref: ChangeDetectorRef,
     private route: ActivatedRoute,
-    private matchesService: MatchesService
+    private matchesService: MatchesService,
+    private globalsService: GlobalsService
   ) {}
 
   ngOnInit(): void {
@@ -49,8 +51,10 @@ export class MatchComponent implements OnInit {
   }
 
   updatePoints(points: number) {
+    const user = this.globalsService.getUser();
+
     this.matchesService
-      .updatePlayerPoints(this.id, '', points)
+      .updatePlayerPoints(this.id, user.username, points)
       .subscribe({ next: () => console.log('Se guardaron sus resultados') });
   }
 }

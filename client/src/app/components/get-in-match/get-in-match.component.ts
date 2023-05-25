@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GlobalsService } from 'src/app/services/globals/globals.service';
 import { MatchesService } from 'src/app/services/matches/matches.service';
 
@@ -24,21 +24,23 @@ export class GetInMatchComponent implements OnInit {
   }
 
   public addPlayerToMatch() {
-    const guest = !this.router.url.includes('student');
+    const guest = !this.router.url.includes('estudiante');
 
     if (guest) {
       if (!this.guestUsername) {
         alert('Tiene que agregar un nombre de usuario provisional');
       } else {
         this.username = this.guestUsername;
+        this.globalsService.addUser(this.username);
       }
     }
 
     this.matchesService
       .addPlayer(this.matchId, this.username, guest)
       .subscribe({
-        next: (msg) => this.router.navigate(['./', this.matchId]),
-        error: (err) => (console.error(err.message), alert(err)),
+        next: () =>
+          this.router.navigateByUrl(`${this.router.url}/${this.matchId}`),
+        error: (err) => (console.error(err.error), alert(err.error)),
       });
   }
 }

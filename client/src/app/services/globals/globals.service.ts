@@ -11,8 +11,15 @@ export class GlobalsService {
     return this.baseUrl;
   }
 
+  addUser(username: string) {
+    localStorage.setItem('tmpUser', JSON.stringify({ username }));
+  }
+
   getUser() {
-    const user = localStorage.getItem('actualUser') || '{}';
+    const user =
+      localStorage.getItem('actualUser') ||
+      localStorage.getItem('tmpUser') ||
+      '{}';
     return JSON.parse(user) as User;
   }
 

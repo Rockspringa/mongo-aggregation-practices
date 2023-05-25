@@ -177,7 +177,7 @@ async function addPlayerToTheMatch(req, res) {
 
   await addPlayer(id, username, guest, points);
 
-  res.status(201).send("Se agrego al usuario al juego en curso");
+  res.status(201).send();
 }
 
 /**
@@ -198,9 +198,9 @@ async function changePlayerPoints(req, res) {
       );
   }
 
-  await updatePlayerPoints(id, username, points);
+  await updatePlayerPoints(id, username, +points);
 
-  res.status(201).send("Se agrego al usuario al juego en curso");
+  res.status(200);
 }
 
 /**

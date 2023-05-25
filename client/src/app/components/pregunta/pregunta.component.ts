@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Trivia } from 'src/app/game-preguntas/interfaces/pregunta.interface';
 import Swal from 'sweetalert2';
@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
   selector: 'app-pregunta',
   templateUrl: './pregunta.component.html',
   styleUrls: ['./pregunta.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PreguntaComponent {
   //@Input('trivia')
@@ -53,9 +54,9 @@ export class PreguntaComponent {
   //     // Resto de las preguntas
   //   ]
   // }
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private ref: ChangeDetectorRef) {}
 
-  preguntaActual: any;
+  preguntaActual: any = '';
   preguntaIndex: number = 0;
   tiempoRestante: number = 10;
   intervalo: any;
@@ -72,13 +73,8 @@ export class PreguntaComponent {
   //   //this.iniciarPregunta();
   // }
   ngOnInit() {
-    const triviaString = this.route.snapshot.paramMap.get('trivia');
-    if (triviaString) {
-      this.trivia = JSON.parse(triviaString);
-      console.log('hola', this.trivia);
-      this.iniciarPregunta();
-    }
     // Resto del código...
+      this.iniciarPregunta();
   }
 
   iniciarPregunta() {
@@ -95,6 +91,7 @@ export class PreguntaComponent {
       if (this.tiempoRestante <= 0) {
         clearInterval(this.intervalo);
         this.seleccionarRespuesta(''); // Ejecutar cuando se acabe el tiempo
+        this.ref.markForCheck();
       }
     }, 1000);
   }

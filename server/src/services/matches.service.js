@@ -57,25 +57,24 @@ async function addPlayer(_id, username, guest, points) {
   );
 
   if (!match) {
-    throw new Error("El nombre de usuario ya existe");
+    return;
   }
 
-  return match.players;
+  return match.players.map((player) => player.username);
 }
 
 /**
  * @param {ObjectId} _id
  * @param {string} username
- * @param {string} points
+ * @param {number} points
  */
 async function updatePlayerPoints(_id, username, points) {
   const match = await matchesModel.findOneAndUpdate(
     {
       _id,
-      "players.username": { $ne: username },
-      "players.guest": { $ne: guest },
+      "players.username": username,
     },
-    { "players.$.points": { points } },
+    { "players.$.points": points },
     { new: true }
   );
 

@@ -26,7 +26,7 @@ export class MatchCreatorComponent {
 
   public createMatch() {
     const user = this.globalsService.getUser();
-    console.log(user);
+
     this.matchesService
       .createMatch(this.selectedGame, user.username, this.state ?? {})
       .subscribe({
@@ -39,7 +39,7 @@ export class MatchCreatorComponent {
             .navigateByUrl('/profesor')
             .then(() => this.router.navigateByUrl('/profesor/crear-sala'));
         },
-        error: console.error,
+        error: (err) => console.error(err.error),
       });
   }
 }
